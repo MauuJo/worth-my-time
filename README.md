@@ -66,6 +66,8 @@ startCommand: python app.py
 
 The deployed version has briefs disabled because the model runs locally on the machine that starts the app. In `render.yaml`, `ENABLE_BRIEF` is set to `"false"` to keep the deployment simple and reliable. If you want local brief generation, run the model on the same machine that hosts the app or use a dedicated Ollama host.
 
+The Render configuration pins Python 3.12.10. Gradio's audio dependencies expect the `audioop` standard-library module, which was removed in Python 3.13; using Python 3.12 avoids that startup failure.
+
 ## Verdict rules
 
 The verdict logic is deterministic and explainable:
